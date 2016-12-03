@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/homebridge-mysqueezebox-alarmclocksensor.svg)](https://badge.fury.io/js/homebridge-mysqueezebox-alarmclocksensor)
 
-This plugin creates a contact sensor accessory based on Squeezebox (discontinued) alarm time. When an alarm is about to be triggered (e.g. 30 minutes before / configurable `window_minutes`), the sensor will be switched on. This allows you to perform any automation workflow you want (from iOS Home App for instance). I personally use it to kick in my heating system (Nest Thermostat) so that my home is warm when I get up (it motivates me to get out of bed for catching up that 5:30am plane).
+This plugin creates a contact sensor accessory based on Squeezebox alarm time. When an alarm is about to be triggered (e.g. 30 minutes before / configurable `window_minutes`), the sensor will be switched on. This allows you to perform any automation workflow you want (from iOS Home App for instance). I personally use it to kick in my heating system (Nest Thermostat) so that my home is warm when I get up (it motivates me to get out of bed for catching up that 5:30am plane).
 
 I took large inspiration from [homebridge-mysqueezebox](https://github.com/nriley/homebridge-mysqueezebox) plugin. [Nicolas Riley, aka nriley](https://github.com/nriley) deserves credit for that, thank you big times!
 
