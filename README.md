@@ -6,7 +6,7 @@ This plugin creates a contact sensor accessory based on Squeezebox alarm time. W
 
 I took large inspiration from [homebridge-mysqueezebox](https://github.com/nriley/homebridge-mysqueezebox) plugin. [Nicolas Riley, aka nriley](https://github.com/nriley) deserves credit for that, thank you big times!
 
-NOTE 1: This plugin is, by design, meant to be configured through the [MySqueezebox.com](http://mysqueezebox.com). I did not want to install a local [Logitech Media Server (LMS)](https://en.wikipedia.org/wiki/Logitech_Media_Server) on my Mac Mini. You will then need to register to the cloud based service.
+NOTE 1: This plugin is, by design, meant to be configured through the [MySqueezebox.com](http://mysqueezebox.com). I did not want to install a local [Logitech Media Server (LMS)](https://en.wikipedia.org/wiki/Logitech_Media_Server).
 
 NOTE 2: I use Apple HomeKit Automation feature to setup the action to be performed once the sensor is ON. You will need an Apple TV 4 or an iPad that stays at home. See [HomeKit Automation requirements](https://support.apple.com/en-us/HT207057).
 
