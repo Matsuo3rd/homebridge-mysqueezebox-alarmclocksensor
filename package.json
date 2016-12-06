@@ -1,6 +1,6 @@
 {
   "name": "homebridge-mysqueezebox-alarmclocksensor",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "mysqueezebox alarm clock sensor plugin for homebridge: https://github.com/nfarina/homebridge",
   "license": "ISC",
   "keywords": [
@@ -8,10 +8,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/nriley/homebridge-mysqueezebox-alarmclocksensor.git"
+    "url": "git://github.com/matsuo3rd/homebridge-mysqueezebox-alarmclocksensor.git"
   },
   "bugs": {
-    "url": "http://github.com/nriley/homebridge-mysqueezebox-alarmclocksensor/issues"
+    "url": "http://github.com/matsuo3rd/homebridge-mysqueezebox-alarmclocksensor/issues"
   },
   "engines": {
     "node": ">=0.12.0",

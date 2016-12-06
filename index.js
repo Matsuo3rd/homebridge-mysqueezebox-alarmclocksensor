@@ -24,7 +24,7 @@ function MySqueezeboxAlarmClockSensorAccessory(log, config) {
   this.email = config["email"];
   this.password = config["password"];
   this.playerid = config["playerid"];
-  this.poll_cron = config["poll_cron"] || "*/5 4-10 * * *";
+  this.poll_cron = config["poll_cron"] || "*/5 4-9 * * *";
   this.window_minutes = config["window_minutes"] || 30;
   this.sensor_type = config["sensor_type"] || "c";
 
