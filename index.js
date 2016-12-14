@@ -1,6 +1,3 @@
-// http://htmlpreview.github.io/?https://github.com/Logitech/slimserver/blob/public/7.7/HTML/EN/html/docs/cli-api.html#alarmNotify
-// https://github.com/SphtKr/homebridge-filesensor/blob/master/index.js
-
 var cron = require('node-cron');
 var request = require("request");
 var jar = request.jar();
@@ -69,11 +66,7 @@ function MySqueezeboxAlarmClockSensorAccessory(log, config) {
   }
 
   cron.schedule(this.poll_cron, function() {
-    try {
-      this.pollAlarms(changeAction);
-    } catch (err) {
-      this.log.error("Error while polling alarms", err);
-    }
+    this.pollAlarms(changeAction);
   }.bind(this));
 }
 
@@ -121,28 +114,30 @@ MySqueezeboxAlarmClockSensorAccessory.prototype.getServices = function() {
 
 MySqueezeboxAlarmClockSensorAccessory.prototype.login = function(callback) {
   // XXX cookies last for a year; don't bother trying to handle expiration
-  if (jar.getCookieString("http://mysqueezebox.com")) {
+  if (jar.getCookieString("https://mysqueezebox.com")) {
     callback(null);
     return;
   }
 
-  request.get("http://mysqueezebox.com/user/login", {
+  request.get("https://mysqueezebox.com/user/login", {
     form : {
       email : this.email,
-      password : this.password
-    }
+      password : this.password,
+    },
+    // XXX mysqueezebox.com has no proper SSL certificate
+    rejectUnauthorized : false
   }, function(err, response, body) {
     if (!err) {
-      this.log.debug(jar.getCookieString("http://mysqueezebox.com"));
+      this.log.debug(jar.getCookieString("https://mysqueezebox.com"));
       callback(null);
     } else {
-      this.log.error("MySqueezebox error '%s'. Response: %s", err, body);
+      this.log.error("MySqueezebox login error '%s'. Response: %s", err, body);
       callback(err || new Error("Failed to log into MySqueezebox."));
     }
   }.bind(this));
 }
 
-MySqueezeboxAlarmClockSensorAccessory.prototype.command = function(command, callback) {
+MySqueezeboxAlarmClockSensorAccessory.prototype.command = function(command, callback, retries=0) {
   var rpc = {
     id : 1,
     method : "slim.request",
@@ -150,15 +145,23 @@ MySqueezeboxAlarmClockSensorAccessory.prototype.command = function(command, call
   };
 
   request.post({
-    url : "http://mysqueezebox.com/jsonrpc.js",
-    json : rpc
+    url : "https://mysqueezebox.com/jsonrpc.js",
+    json : rpc,
+    // XXX mysqueezebox.com has no proper SSL certificate
+    rejectUnauthorized : false
   }, function(err, response, body) {
-    if (!err && response.statusCode == 200) {
-      this.log.debug("MySqueezebox JSON RPC complete: " + JSON.stringify(rpc) + " => "
+    if (!err && response.statusCode == 200 && body.error == null) {
+      this.log.debug("MySqueezebox RPC complete: " + JSON.stringify(rpc) + " => "
 	  + JSON.stringify(body));
       callback(null, response);
-    } else {
-      this.log.error("MySqueezebox error '%s'. Response: %s", err, body);
+    } else if (body.error != null && retries < 3) {
+      retries++;
+      this.log.warn("MySqueezebox RPC error + "+ JSON.stringify(rpc) + " => "
+	  + JSON.stringify(body) + ". Retrying " + retries + "/3.");
+      setTimeout(function(){this.command(command, callback, retries);}.bind(this), 10000);
+    }
+    else {
+      this.log.error("MySqueezebox RPC error '%s'. Response: %s", err, JSON.stringify(body));
       callback(err || new Error("MySqueezebox error occurred."));
     }
   }.bind(this));
