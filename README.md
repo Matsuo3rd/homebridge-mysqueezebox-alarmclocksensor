@@ -2,14 +2,14 @@
 
 [![npm version](https://badge.fury.io/js/homebridge-mysqueezebox-alarmclocksensor.svg)](https://badge.fury.io/js/homebridge-mysqueezebox-alarmclocksensor)
 
-Squeezebox alarm clock sensor plugin for [Homebridge](https://github.com/nfarina/homebridge)
+Squeezebox alarm clock sensor plugin for [Homebridge](https://github.com/nfarina/homebridge).
 
 ## Features
 
-This plugin creates a contact sensor accessory based on Squeezebox alarm time. When an alarm is about to be triggered (e.g. 30 minutes before / configurable `window_minutes`), the sensor will be "switched on". The sensor will switch back to initial state once the alarm time has passed. This allows you to perform any automation workflow you want (from iOS Home App for instance).
-In order to determine sensor status, your Squeezebox's alarms states (on/off and schedules) are polled on a frequency defined by the `poll_cron` parameter (by default every 5th minute from 5am through 10am).
+This plugin creates a sensor accessory based on Squeezebox alarm time. This allows you to perform any automation workflow you want when you alarm clock is about to ring (from iOS Home App for instance). I personally use it to kick in my heating system (Nest Thermostat) so that my home is warm when I get up (it motivates me to get out of bed for catching up that 6:30am plane).
 
-I personally use it to kick in my heating system (Nest Thermostat) so that my home is warm when I get up (it motivates me to get out of bed for catching up that 5:30am plane).
+When an alarm is about to be triggered (e.g. 30 minutes before / configurable `window_minutes`), the sensor will be "switched on". The sensor will switch back to initial state once the alarm time has passed. 
+In order to determine sensor status, your Squeezebox's alarms states (on/off and schedules) are polled on a frequency defined by the `poll_cron` parameter (by default every 5th minute from 5am through 10am).
 
 NOTE 1: This plugin is, by design, meant to be configured through the [MySqueezebox.com](http://mysqueezebox.com). I did not want to install a local [Logitech Media Server (LMS)](https://en.wikipedia.org/wiki/Logitech_Media_Server).
 
