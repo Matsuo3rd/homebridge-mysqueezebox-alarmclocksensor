@@ -28,11 +28,13 @@ NOTE 3: Squeezebox product line is discontinued by the manufacturer (Logitech). 
 
 | Key | Default | Description |
 | --- | --- | --- |
+| `accessory` | N/A | Must be set to "MySqueezeboxAlarmClockSensor".|
+| `name	` | Squeezebox Alarm Sensor | Name of accessory.|
 | `playerid` | N/A | The MAC address of your Squeezebox. You can find it from [MySqueezebox.com](http://mysqueezebox.com) under Player section: Player MAC Address.|
 | `poll_cron` | */5 4-9 * * * | The [Cron expression](https://www.npmjs.com/package/node-cron#cron-syntax) defining the frequency for polling alarms status. e.g. "*/5 5-9 * * *" will poll alarms at every 5th minute from 5am through 10am.|
 | `window_minutes` | 30 | When polling alarms, if an alarm time is defined within this many minutes, the sensor will be triggered.. |
-| `sensor_type	` | c | Currently either "m" for motion sensor or "c" for contact sensor. |
-| `email` | N/A | Your mysqueezebox.com email account. |
+| `sensor_type` | c | Currently either "m" for motion sensor or "c" for contact sensor.|
+| `email` | N/A | Your mysqueezebox.com email account.|
 | `password` | N/A | Your mysqueezebox.com password account. Note that MySqueezebox website sends your email and password in clear text.  Don't use any password you care about.|
 
 Configuration sample:
