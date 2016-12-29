@@ -1,24 +1,37 @@
 {
-  "name": "homebridge-mysqueezebox-alarmclocksensor",
-  "version": "0.0.3",
-  "description": "Squeezebox alarm clock sensor plugin for Homebridge",
-  "license": "ISC",
-  "keywords": [
-    "homebridge-plugin"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/matsuo3rd/homebridge-mysqueezebox-alarmclocksensor.git"
+	"name": "homebridge-mysqueezebox-alarmclocksensor",
+	"description": "Squeezebox alarm clock sensor plugin for Homebridge",
+	"version": "0.0.4",
+	"author": "matsuo3rd",
+	"homepage": "https://github.com/matsuo3rd/homebridge-mysqueezebox-alarmclocksensor#readme",
+	"license": "ISC",
+	"main": "index.js",
+	"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "echo \"Error: configure and run homebridge to start\" && exit 1"
   },
-  "bugs": {
-    "url": "http://github.com/matsuo3rd/homebridge-mysqueezebox-alarmclocksensor/issues"
-  },
-  "engines": {
-    "node": ">=0.12.0",
-    "homebridge": ">=0.2.0"
-  },
-  "dependencies": {
-    "request": "^2.65.0",
-    "node-cron": "^1.1.2"
-  }
+	"keywords": [
+		"homebridge-plugin",
+		"Squeezebox",
+		"MySqueezebox",
+		"smart alarm clock",
+		"HomeKit",
+		"Homebridge",
+		"Siri"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/matsuo3rd/homebridge-mysqueezebox-alarmclocksensor.git"
+	},
+	"bugs": {
+		"url": "http://github.com/matsuo3rd/homebridge-mysqueezebox-alarmclocksensor/issues"
+	},
+	"engines": {
+		"node": ">=0.12.0",
+		"homebridge": ">=0.2.0"
+	},
+	"dependencies": {
+		"request": "^2.65.0",
+		"node-cron": "^1.1.2"
+	}
 }
