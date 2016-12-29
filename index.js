@@ -17,7 +17,7 @@ module.exports = function(homebridge) {
 
 function MySqueezeboxAlarmClockSensorAccessory(log, config) {
   this.log = log;
-  this.name = config["name"];
+  this.name = config["name"] || "Squeezebox Alarm Sensor";
   this.email = config["email"];
   this.password = config["password"];
   this.playerid = config["playerid"];
@@ -154,7 +154,7 @@ MySqueezeboxAlarmClockSensorAccessory.prototype.command = function(command, call
       this.log.debug("MySqueezebox RPC complete: " + JSON.stringify(rpc) + " => "
 	  + JSON.stringify(body));
       callback(null, response);
-    } else if (body.error != null && retries < 3) {
+    } else if ( (!body || body.error != null) && retries < 3) {
       retries++;
       this.log.warn("MySqueezebox RPC error + "+ JSON.stringify(rpc) + " => "
 	  + JSON.stringify(body) + ". Retrying " + retries + "/3.");
